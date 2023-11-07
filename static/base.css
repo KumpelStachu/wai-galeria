@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300..900&display=swap');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	color-scheme: dark;
+	accent-color: pink;
+	font-family: 'Red Hat Display', sans-serif;
+	font-weight: 500;
+}
+
+body {
+	background-color: black;
+	color: white;
+	margin: 0;
+	padding: 2rem;
+}
+
+header,
+footer {
+	max-width: 75rem;
+	margin-inline: auto;
+	height: 4rem;
+	border-radius: 1rem;
+	border: 2px solid white;
+	padding: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+main {
+	max-width: 71rem;
+	margin: 2rem auto;
+	min-height: calc(100vh - 16rem);
+	min-height: calc(100svh - 16rem);
+}
+
+a,
+button {
+	cursor: pointer;
+	color: white;
+	background-color: black;
+	font-weight: 650;
+	text-decoration: none;
+	border-radius: 0.5rem;
+	padding: 0.2rem 0.4rem;
+	outline: none;
+	transition: font-weight 200ms ease-in-out, background-color 200ms ease-in-out,
+		color 200ms ease-in-out;
+}
+
+button {
+	padding: 0.4rem 1.4rem;
+}
+
+.outline {
+	outline: 1.5px solid white;
+}
+
+.border,
+button {
+	border: 1.5px solid white;
+}
+
+.disabled {
+	cursor: not-allowed;
+	user-select: none;
+}
+
+:is(a, button):not(.disabled):is(:hover, :focus-visible) {
+	font-weight: 900;
+	color: black;
+	background-color: white;
+}
+
+label > span {
+	display: block;
+	font-weight: 500;
+	font-size: 0.85rem;
+	margin-bottom: 0.2rem;
+	margin-left: 0.5rem;
+	transition: font-weight 200ms ease-in-out, font-size 200ms ease-in-out,
+		margin-bottom 200ms ease-in-out, margin-left 200ms ease-in-out;
+}
+
+label:has(input[type='checkbox']) {
+	cursor: pointer;
+	padding: 0.5rem 0.7rem;
+	border-radius: 0.7rem;
+	outline: 1.5px solid white;
+}
+
+label > input[type='checkbox'] + span {
+	display: inline;
+	margin-left: 0.3rem;
+	user-select: none;
+}
+
+label > span:has(+ input:focus-visible) {
+	font-size: 0.95rem;
+	font-weight: 650;
+	margin-bottom: 0.5rem;
+	margin-left: 0;
+}
+
+label + label {
+	display: block;
+	margin-top: 1rem;
+}
+
+input:not([type='checkbox']) {
+	width: 100%;
+	border: none;
+	outline: 1.5px solid white;
+	padding: 0.5rem 0.7rem;
+	border-radius: 0.7rem;
+	font-weight: 650;
+	color: white;
+	background-color: black;
+	transition: font-weight 200ms ease-in-out, background-color 200ms ease-in-out,
+		color 200ms ease-in-out, outline-offset 200ms ease-in-out;
+}
+
+input:focus-visible {
+	color: black;
+	background-color: white;
+	font-weight: 550;
+	outline-offset: 3px;
+}
+
+.error {
+	font-weight: 650;
+	color: deeppink;
+}
+
+img {
+	width: 100%;
+}

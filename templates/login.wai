@@ -1,0 +1,20 @@
+<main class="grid items-center">
+	<form method="post">
+		<h1 class="mb-6 align-center">Logowanie</h1>
+		{{ #if[error](@$error) }}
+		<div class="error mb-4 align-center">{{ $error }}</div>
+		{{ /if[error] }}
+		<label>
+			<span>Nazwa użytkownika</span>
+			<input type="text" name="username" autocomplete="username" required />
+		</label>
+		<label>
+			<span>Hasło</span>
+			<input type="password" name="password" autocomplete="current-password" required />
+		</label>
+		<div class="flex justify-center">
+			<button class="mt-4 mx-[auto] w-[90%]">Zaloguj się</button>
+		</div>
+		<h1>&nbsp;</h1>
+	</form>
+</main>

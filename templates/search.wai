@@ -1,0 +1,8 @@
+<main>
+	<label>
+		<span>Szukaj zdjęć</span>
+		<input type="search" />
+	</label>
+
+	<div id="results" class="mt-6"></div>
+</main>

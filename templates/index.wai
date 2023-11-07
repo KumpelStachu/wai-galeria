@@ -1,0 +1,17 @@
+<main>
+	<div class="mb-4 flex justify-center gap-4">
+		{{ #if[prevPage-top]($prevPage) }}
+		<a href="{{ $prevPage }}" class="outline">Poprzednia strona</a>
+		{{ #else[prevPage-top] }}
+		<a href="#" class="disabled">Poprzednia strona</a>
+		{{ /if[prevPage-top] }}
+
+		{{ #if[nextPage-top]($nextPage) }}
+		<a href="{{ $nextPage }}" class="border">Następna strona</a>
+		{{ #else[nextPage-top] }}
+		<a href="#" class="disabled">Następna strona</a>
+		{{ /if[nextPage-top] }}
+	</div>
+
+	{{ #include(_gallery) }}
+</main>

@@ -1,0 +1,36 @@
+<main class="grid items-center">
+	<form method="post" enctype="multipart/form-data">
+		<h1 class="mb-6 align-center">Dodaj zdjęcie</h1>
+		{{ #if[error](@$error) }}
+		<div class="error mb-4 align-center">{{ $error }}</div>
+		{{ /if[error] }}
+		<label>
+			<span>Opis zdjęcia</span>
+			<input type="text" name="title" required />
+		</label>
+		<label>
+			<span>Znak wodny</span>
+			<input type="text" name="watermark" value="{{ $$user.username }}" required />
+		</label>
+
+		{{ #if[author](!isset($user)) }}
+		<label>
+			<span>Autor</span>
+			<input type="text" name="author" required />
+		</label>
+		{{ #else[author] }}
+		<label>
+			<input type="checkbox" name="public" value="public" checked />
+			<span>Puliczne</span>
+		</label>
+		{{ /if[author] }}
+
+		<label class="mt-6 mb-2">
+			<input type="file" name="image" accept="image/png,image/jpeg,image/jpg" required />
+		</label>
+		<div class="flex justify-center">
+			<button class="mt-4 mx-[auto] w-[90%]">Dodaj</button>
+		</div>
+		<h1>&nbsp;</h1>
+	</form>
+</main>

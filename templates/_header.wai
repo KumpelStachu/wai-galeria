@@ -1,0 +1,18 @@
+<header>
+	<nav>
+		<a href="{{ $base }}/">Galeria</a>
+		<a href="{{ $base }}/search">Szukaj</a>
+		<a href="{{ $base }}/create">Dodaj zdjęcie</a>
+	</nav>
+	<div>
+		{{ #if[login-logout]($user) }}
+		<a href="{{ $base }}/logout">Wyloguj się</a>
+		{{ #else[login-logout] }}
+		<a href="{{ $base }}/register">Zarejestruj się</a>
+		<a href="{{ $base }}/login">Zaloguj się</a>
+		{{ /if[login-logout] }}
+		<form action="{{ $base }}/delete" class="inline">
+			<button title="Usuń zapamiętane">🗑️</button>
+		</form>
+	</div>
+</header>

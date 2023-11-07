@@ -1,0 +1,3 @@
+<link rel="stylesheet" href="{{ $base }}/gallery.css" />
+<script src="{{ $base }}/search.js" defer></script>
+<script src="{{ $base }}/gallery.js" defer></script>

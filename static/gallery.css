@@ -1,0 +1,52 @@
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	flex-basis: min-content;
+	gap: 2rem;
+	justify-content: center;
+}
+
+.gallery > * {
+	width: min-content;
+	outline: 2px solid white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	border-radius: 1rem;
+	padding: 1rem;
+}
+
+.gallery img {
+	width: 200px;
+	height: 125px;
+	transition: scale 200ms ease-in-out;
+}
+
+.gallery > *:hover img {
+	scale: 1.1;
+}
+
+.gallery .img-container {
+	width: 200px;
+	height: 125px;
+	overflow: hidden;
+	border-radius: 0.5rem;
+	background-color: black;
+	transition: background-color 200ms ease-in-out, margin 200ms ease-in-out;
+}
+
+.gallery > *:hover .img-container {
+	margin: 0.2rem;
+	background-color: white;
+}
+
+.gallery span[data-public='']::before {
+	content: '🔒 ';
+}
+
+.gallery input[type='checkbox']::after {
+	content: 'Zapamiętaj wybrane';
+	font-size: 1px;
+	color: rgba(255, 255, 255, 0.1);
+}

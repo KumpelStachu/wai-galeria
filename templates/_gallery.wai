@@ -1,0 +1,11 @@
+<div class="gallery">
+	{{ #each[gallery]($images) }}
+	<a href="{{ $base }}/images/{{ $_._id }}.webp" target="_blank">
+		<span data-public="{{ $_.public }}">{{ $_.title }}</span>
+		<div class="img-container">
+			<img src="{{ $base }}/images/{{ $_._id }}-thumb.webp" alt="{{ $_.title }}" />
+		</div>
+		<input type="checkbox" {{$_.checked}} title="Zapamiętaj wybrane" />
+	</a>
+	{{ /each[gallery] }}
+</div>
