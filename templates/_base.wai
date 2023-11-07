@@ -6,6 +6,7 @@
 		<link rel="shortcut icon" href="{{ $base }}/favicon.ico" type="image/x-icon" />
 		<title>{{ $title }}</title>
 		<link rel="stylesheet" href="{{ $base }}/base.css" />
+		<script defer data-domain="php.code.kums.dev" src="https://a.kums.me/js/script.js"></script>
 		{{
 			$head
 		}}
