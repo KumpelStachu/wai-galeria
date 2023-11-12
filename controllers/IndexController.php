@@ -15,7 +15,7 @@ class IndexController
 
     $images = ImageModel::find(['$where' => $userWhere], ['limit' => $pageSize + 1, 'skip' => $pageSize * ($page - 1), 'sort' => ['createdAt' => -1]]);
 
-    $checked = explode(',', Cookie::get('checked') ?? '');
+    $checked = Session::get('checked', []);
     array_walk($images, function (&$image) use ($checked) {
       if (in_array("{$image->_id}", $checked))
         $image->checked = 'checked';
@@ -27,20 +27,5 @@ class IndexController
       'prevPage' => $page > 1 ? '?page=' . $page - 1 : '',
       'nextPage' => count($images) > $pageSize ? '?page=' . $page + 1 : '',
     ]);
-  }
-
-  function POST()
-  {
-    $array = explode(',', Cookie::get('checked') ?? '');
-
-    if (isset($_POST['checked'])) {
-      $array[] = $_POST['id'];
-    } else if (($key = array_search($_POST['id'], $array)) !== false) {
-      unset($array[$key]);
-    }
-
-    Cookie::set('checked', join(',', $array));
-
-    return Response::json($array);
   }
 }

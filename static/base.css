@@ -8,7 +8,7 @@
 
 :root {
 	color-scheme: dark;
-	accent-color: pink;
+	accent-color: deeppink;
 	font-family: 'Red Hat Display', sans-serif;
 	font-weight: 500;
 }
@@ -126,6 +126,11 @@ input:not([type='checkbox']) {
 		color 200ms ease-in-out, outline-offset 200ms ease-in-out;
 }
 
+input[type='checkbox'] {
+	height: 1rem;
+	border: 1.5px solid white;
+}
+
 input:focus-visible {
 	color: black;
 	background-color: white;
@@ -140,4 +145,28 @@ input:focus-visible {
 
 img {
 	width: 100%;
+}
+
+.no {
+	pointer-events: none !important;
+	animation: rotation 1s infinite;
+	overflow: hidden;
+}
+
+.no::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	background-color: #0000007f;
+	cursor: wait;
+}
+
+@keyframes rotation {
+	from {
+		rotate: 0deg;
+	}
+
+	to {
+		rotate: 1turn;
+	}
 }

@@ -15,7 +15,6 @@ class RegisterController
 
   function POST()
   {
-
     if ($_POST['password'] !== $_POST['password-repeat']) {
       $error = 'Hasła nie są takie same!';
     } else {

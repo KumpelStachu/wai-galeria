@@ -3,6 +3,8 @@ require_once 'lib/autoload.php';
 
 DB::connect('db-mongo', 27017, 'root', 'mongo', 'galeria');
 
+Session::start();
+
 Router::basePath('/galeria');
 Router::serveFiles('/static');
 Router::serveFiles('/static');
@@ -35,7 +37,7 @@ Router::registerHandler('/watermark.webp', 'GET', function () {
 });
 
 Router::registerHandler('/delete', 'GET', function () {
-  Cookie::set('checked', '');
+  Session::set('checked', []);
   return Response::redirect(Router::$basePath . '/');
 });
 
@@ -45,5 +47,6 @@ Router::registerController(LoginController::class);
 Router::registerController(LogoutController::class);
 Router::registerController(CreateController::class);
 Router::registerController(SearchController::class);
+Router::registerController(CartController::class);
 
 Router::handle();

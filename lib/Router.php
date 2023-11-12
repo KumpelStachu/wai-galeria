@@ -108,4 +108,5 @@ class Router
 Template::addGenerator(function (&$params) {
   $params['base'] = Router::$basePath;
   $params['user'] = Auth::getUser();
+  $params['hasCart'] = count(Session::get('checked', [])) > 0;
 });

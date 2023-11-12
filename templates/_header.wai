@@ -5,6 +5,7 @@
 		<a href="{{ $base }}/create">Dodaj zdjęcie</a>
 	</nav>
 	<div>
+		<a href="{{ $base }}/cart" id="cart" {{ #if[has-cart](!$hasCart) }}style="display: none"{{ /if[has-cart] }}>🛒</a>
 		{{ #if[login-logout]($user) }}
 		<a href="{{ $base }}/logout">Wyloguj się</a>
 		{{ #else[login-logout] }}

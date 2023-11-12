@@ -42,6 +42,21 @@ class CreateController
       return CreateController::GET();
     }
 
+    if ($_FILES['image']['type'] === 'image/png') {
+      $fullImage = imagecreatefrompng($_FILES['image']['tmp_name']);
+    } else   if ($_FILES['image']['type'] === 'image/jpeg') {
+      $fullImage = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+    } else {
+      Template::addGenerator(function (&$params) {
+        $params['error'] = 'Nieprawidłowy format pliku!';
+      });
+
+      return CreateController::GET();
+    }
+
+    $scaledImage = Utils::scaleImage($fullImage, 200, 125);
+    $watermarkImage = Utils::watermark($fullImage, $_POST['watermark']);
+
     $id = ImageModel::fromArray([
       'title' => $_POST['title'],
       'author' => isset($_POST['author']) ? $_POST['author'] : Auth::getUser()->username,
@@ -53,17 +68,6 @@ class CreateController
     $fullTarget = "$target-full.webp";
     $thumbTarget = "$target-thumb.webp";
     $watermarkTarget = "$target.webp";
-
-    if ($_FILES['image']['type'] === 'image/png') {
-      $fullImage = imagecreatefrompng($_FILES['image']['tmp_name']);
-    } else   if ($_FILES['image']['type'] === 'image/jpeg') {
-      $fullImage = imagecreatefromjpeg($_FILES['image']['tmp_name']);
-    } else {
-      throw new Error('image type error????');
-    }
-
-    $scaledImage = Utils::scaleImage($fullImage, 200, 125);
-    $watermarkImage = Utils::watermark($fullImage, $_POST['watermark']);
 
     imagewebp($fullImage, $fullTarget);
     imagewebp($scaledImage, $thumbTarget);
